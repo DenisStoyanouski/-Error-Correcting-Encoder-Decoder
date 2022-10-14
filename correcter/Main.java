@@ -17,6 +17,7 @@ public class Main {
         for (int i = 0; i< message.length(); i++) {
             tripling.append(String.valueOf(message.charAt(i)).repeat(3));
         }
+        System.out.println(tripling);
         emulateError(tripling.toString().toCharArray());
     }
 
@@ -24,15 +25,29 @@ public class Main {
         String input;
         Scanner scanner = new Scanner(System.in);
         input = scanner.nextLine();
+        System.out.println(input);
         return input;
     }
 
-    private static String emulateError(char[] phrase) {
+    private static void emulateError(char[] phrase) {
 
         for (int i = 0; i < phrase.length - 2; i += 3) {
             phrase[i + addExtra()] =  generateRandomChar();
         }
-        return String.valueOf(phrase);
+        System.out.println(String.valueOf(phrase));
+        decodeMessage(phrase);
+    }
+
+    private static void decodeMessage(char[] phrase) {
+        StringBuilder decode = new StringBuilder();
+        for (int i = 0; i < phrase.length - 2; i += 3) {
+            if (phrase[i] != phrase[i + 1] && phrase[i] == phrase [i + 2]) {
+                decode.append(phrase[i + 1]);
+            } else {
+                decode.append(phrase[i]);
+            }
+        }
+        System.out.println(decode);
     }
 
     private static int addExtra() {
