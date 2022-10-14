@@ -9,8 +9,15 @@ public class Main {
     }
 
     public static void runProgram() {
-        char[] phrase = getInput().toCharArray();
-        System.out.println(emulateError(phrase));
+        tripleMessage(getInput());
+    }
+
+    private static void tripleMessage(String message) {
+        StringBuilder tripling = new StringBuilder();
+        for (int i = 0; i< message.length(); i++) {
+            tripling.append(String.valueOf(message.charAt(i)).repeat(3));
+        }
+        emulateError(tripling.toString().toCharArray());
     }
 
     private static String getInput() {
