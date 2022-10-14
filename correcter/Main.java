@@ -22,7 +22,7 @@ public class Main {
 
     private static String emulateError(char[] phrase) {
 
-        for (int i = 0; i < phrase.length; i += 2) {
+        for (int i = 0; i < phrase.length - 2; i += 3) {
             phrase[i + addExtra()] =  generateRandomChar();
         }
         return String.valueOf(phrase);
@@ -37,11 +37,10 @@ public class Main {
         char symbol;
         int byteCode;
         Random random = new Random();
-        byteCode = random.nextInt(122);
-        symbol = (char) byteCode;
-        if (!String.valueOf(symbol).matches("[\\s\\w]")) {
-            generateRandomChar();
-        }
+        do {
+            byteCode = random.nextInt(123);
+            symbol = (char) byteCode;
+        } while (!String.valueOf(symbol).matches("[A-Za-z\\d]"));
         return symbol;
     }
 }
