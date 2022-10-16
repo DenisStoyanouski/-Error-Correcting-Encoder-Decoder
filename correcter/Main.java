@@ -11,11 +11,11 @@ public class Main {
     }
 
     public static void runProgram() {
-        simulateSend(readFile());
+        simulateSending(readFile());
         /*tripleMessage(getInput());*/
     }
 
-    private static void simulateSend(byte[] message) {
+    private static void simulateSending(byte[] message) {
         ArrayList<String> hexSend = new ArrayList<>();
         ArrayList<String> byteSend = new ArrayList<>();
         ArrayList<String> byteReceive = new ArrayList<>();
@@ -40,6 +40,9 @@ public class Main {
         // message changed a bit in each byte received to binary array
         for (int i = 0; i < message.length; i++) {
             StringBuilder number = new StringBuilder(Integer.toBinaryString(message[i]));
+            while (number.length() < 8) {
+                number.insert(0, '0');
+            }
             int numberOfBit = randomBit();
             if (number.charAt(numberOfBit) == '0') {
                 number.setCharAt(numberOfBit, '1');
