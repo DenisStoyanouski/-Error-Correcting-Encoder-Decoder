@@ -1,5 +1,8 @@
 package correcter;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -27,6 +30,17 @@ public class Main {
         input = scanner.nextLine();
         System.out.println(input);
         return input;
+    }
+
+    private static byte[] readFile() {
+        byte[] message = null;
+        File file = new File("./send.txt");
+        try (FileInputStream reader = new FileInputStream(file)) {
+            message = reader.readAllBytes();
+        } catch (IOException e) {
+            System.out.println("File not exist");
+        }
+        return message;
     }
 
     private static void emulateError(char[] phrase) {
