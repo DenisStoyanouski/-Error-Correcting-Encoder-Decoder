@@ -1,8 +1,6 @@
 package correcter;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -41,6 +39,15 @@ public class Main {
             System.out.println("File not exist");
         }
         return message;
+    }
+
+    static void writeFile(byte[] array) {
+        File receive = new File("./receive.txt");
+        try (OutputStream outputStream = new FileOutputStream(receive)) {
+            outputStream.write(array);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private static void emulateError(char[] phrase) {
