@@ -110,7 +110,7 @@ public class Main {
 
 
     static void writeFile(byte[] array) {
-        File receive = new File("./receive.txt");
+        File receive = new File("./received.txt");
         try (OutputStream outputStream = new FileOutputStream(receive)) {
             outputStream.write(array);
         } catch (IOException e) {
