@@ -11,8 +11,25 @@ public class Main {
     }
 
     public static void runProgram() {
+        chooseMode();
         simulateSending(readFile());
         /*tripleMessage(getInput());*/
+    }
+
+    private static void chooseMode() {
+        System.out.print("Write a mode");
+        String mode = getInput();
+        switch (mode) {
+            case "encode" : encode();
+            break;
+            case "send" : send();
+            break;
+            case "decode" : decode();
+            break;
+            default:
+                System.out.println("Incorrect input!");
+                break;
+        }
     }
 
     private static void simulateSending(byte[] message) {
@@ -89,13 +106,13 @@ public class Main {
         emulateError(tripling.toString().toCharArray());
     }*/
 
-    /*private static String getInput() {
+    private static String getInput() {
         String input;
         Scanner scanner = new Scanner(System.in);
         input = scanner.nextLine();
         System.out.println(input);
         return input;
-    }*/
+    }
 
     private static byte[] readFile() {
         byte[] message = null;
